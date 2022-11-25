@@ -1,0 +1,10 @@
+<nav>
+  <a routerLink="/home">
+    <h1>{{title}}</h1>
+  </a>
+  <mat-slide-toggle (click)="login()">Log In</mat-slide-toggle>
+</nav>
+<!--
+  Affiche le composant qui correspond à la route
+-->
+<router-outlet></router-outlet>
