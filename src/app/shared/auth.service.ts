@@ -16,7 +16,7 @@ export class AuthService {
     this.loggedIn = false;
   }
 
-  isAdmin():Promise<boolean> {
+  isAdmin(): Promise<boolean> {
     return new Promise((resolve, reject) => {
       resolve(this.loggedIn);
     });

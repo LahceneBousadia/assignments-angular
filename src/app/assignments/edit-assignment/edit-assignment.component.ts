@@ -6,17 +6,19 @@ import { Assignment } from '../assignment.model';
 @Component({
   selector: 'app-edit-assignment',
   templateUrl: './edit-assignment.component.html',
-  styleUrls: ['./edit-assignment.component.css']
+  styleUrls: ['./edit-assignment.component.css'],
 })
 export class EditAssignmentComponent implements OnInit {
-  assignment!:Assignment|undefined;
+  assignment!: Assignment | undefined;
   // Pour les champs de formulaire
-  nomAssignment:string="";
-  dateDeRendu!:Date;
+  nomAssignment: string = '';
+  dateDeRendu!: Date;
 
-  constructor(private assignmentsService:AssignmentsService,
-              private router:Router,
-              private route:ActivatedRoute) { }
+  constructor(
+    private assignmentsService: AssignmentsService,
+    private router: Router,
+    private route: ActivatedRoute
+  ) {}
 
   ngOnInit(): void {
     // Exemple de récupération de ce qui suit le ? dans l'URL
@@ -25,9 +27,9 @@ export class EditAssignmentComponent implements OnInit {
     // fragment (ce qui suit le # dans l'URL)
     const fragment = this.route.snapshot.fragment;
 
-    console.log("nom: " + nom);
-    console.log("age: " + age);
-    console.log("fragment: " + fragment);
+    console.log('nom: ' + nom);
+    console.log('age: ' + age);
+    console.log('fragment: ' + fragment);
     console.log(this.route.snapshot.queryParams);
 
     this.getAssignment();
@@ -36,10 +38,9 @@ export class EditAssignmentComponent implements OnInit {
   getAssignment() {
     // on récupère l'id dans l'url
     // Le + force la conversion en number
-    const id:number = +this.route.snapshot.params['id'];
-    this.assignmentsService.getAssignment(id)
-    .subscribe((assignment) => {
-      if(!assignment) return;
+    const id: number = +this.route.snapshot.params['id'];
+    this.assignmentsService.getAssignment(id).subscribe((assignment) => {
+      if (!assignment) return;
 
       this.assignment = assignment;
       this.nomAssignment = assignment.nom;
@@ -47,8 +48,8 @@ export class EditAssignmentComponent implements OnInit {
     });
   }
   onSaveAssignment() {
-    if(!this.nomAssignment || !this.dateDeRendu) return;
-    if(!this.assignment) return;
+    if (!this.nomAssignment || !this.dateDeRendu) return;
+    if (!this.assignment) return;
 
     // On modifie l'assignment
     this.assignment.nom = this.nomAssignment;
@@ -56,12 +57,13 @@ export class EditAssignmentComponent implements OnInit {
     // On envoie l'assignment modifié au service
     // qui va faire la requête HTTP
     // On va naviguer vers la page d'accueil
-    this.assignmentsService.updateAssignment(this.assignment)
-    .subscribe((reponse) => {
-      console.log(reponse.message);
-      // et on navigue vers la page d'accueil qui affiche
-      // la liste des assignments
-      this.router.navigate(["/home"]);
-    });
+    this.assignmentsService
+      .updateAssignment(this.assignment)
+      .subscribe((reponse) => {
+        console.log(reponse.message);
+        // et on navigue vers la page d'accueil qui affiche
+        // la liste des assignments
+        this.router.navigate(['/home']);
+      });
   }
 }

@@ -13,13 +13,14 @@ import { MatListModule } from '@angular/material/list';
 import { MatCardModule } from '@angular/material/card';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { MatTableModule } from '@angular/material/table';
 
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AssignmentsComponent } from './assignments/assignments.component';
 import { AssignmentDetailComponent } from './assignments/assignment-detail/assignment-detail.component';
 import { AddAssignmentComponent } from './assignments/add-assignment/add-assignment.component';
-import { Routes }  from '@angular/router';
+import { Routes } from '@angular/router';
 import { RouterModule } from '@angular/router';
 import { EditAssignmentComponent } from './assignments/edit-assignment/edit-assignment.component';
 import { AuthGuard } from './shared/auth.guard';
@@ -28,26 +29,26 @@ import { HttpClientModule } from '@angular/common/http';
 const routes: Routes = [
   {
     path: '',
-    component: AssignmentsComponent
+    component: AssignmentsComponent,
   },
   {
     path: 'home',
-    component: AssignmentsComponent
+    component: AssignmentsComponent,
   },
   {
     path: 'add',
-    component: AddAssignmentComponent
+    component: AddAssignmentComponent,
   },
   {
     path: 'assignment/:id',
-    component: AssignmentDetailComponent
+    component: AssignmentDetailComponent,
   },
   {
     path: 'assignment/:id/edit',
     component: EditAssignmentComponent,
-    canActivate:[AuthGuard]
-  }
-]
+    canActivate: [AuthGuard],
+  },
+];
 
 @NgModule({
   declarations: [
@@ -55,19 +56,28 @@ const routes: Routes = [
     AssignmentsComponent,
     AssignmentDetailComponent,
     AddAssignmentComponent,
-    EditAssignmentComponent
+    EditAssignmentComponent,
   ],
   imports: [
     BrowserModule,
-    BrowserAnimationsModule, FormsModule,
-    MatButtonModule, MatIconModule, MatDividerModule,
-    MatFormFieldModule, MatInputModule, MatDatepickerModule,
-    MatNativeDateModule, MatListModule, MatCardModule,
-    MatCheckboxModule, MatSlideToggleModule,
+    BrowserAnimationsModule,
+    FormsModule,
+    MatButtonModule,
+    MatIconModule,
+    MatDividerModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatListModule,
+    MatCardModule,
+    MatCheckboxModule,
+    MatSlideToggleModule,
+    MatTableModule,
     RouterModule.forRoot(routes),
-    HttpClientModule
+    HttpClientModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

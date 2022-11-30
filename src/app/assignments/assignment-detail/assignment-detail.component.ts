@@ -9,11 +9,13 @@ import { Assignment } from '../assignment.model';
   styleUrls: ['./assignment-detail.component.css'],
 })
 export class AssignmentDetailComponent implements OnInit {
-  assignmentTransmis!: Assignment|undefined ;
+  assignmentTransmis!: Assignment | undefined;
 
-  constructor(private assignmentsService: AssignmentsService,
-              private route:ActivatedRoute,
-              private router:Router) {}
+  constructor(
+    private assignmentsService: AssignmentsService,
+    private route: ActivatedRoute,
+    private router: Router
+  ) {}
 
   // Appelé AVANT l'affichage du composant, fait partie du
   // cycle de vie du composant
@@ -24,9 +26,8 @@ export class AssignmentDetailComponent implements OnInit {
   getAssignment() {
     // on récupère l'id dans l'url
     // Le + force la conversion en number
-    const id:number = +this.route.snapshot.params['id'];
-    this.assignmentsService.getAssignment(id)
-    .subscribe((assignment) => {
+    const id: number = +this.route.snapshot.params['id'];
+    this.assignmentsService.getAssignment(id).subscribe((assignment) => {
       this.assignmentTransmis = assignment;
     });
   }
@@ -40,7 +41,7 @@ export class AssignmentDetailComponent implements OnInit {
         console.log(message);
         // et on navigue vers la page d'accueil qui affiche
         // la liste des assignments
-        this.router.navigate(["/home"]);
+        this.router.navigate(['/home']);
       });
   }
 
@@ -53,7 +54,7 @@ export class AssignmentDetailComponent implements OnInit {
         this.assignmentTransmis = undefined;
         // et on navigue vers la page d'accueil qui affiche
         // la liste des assignments
-        this.router.navigate(["/home"]);
+        this.router.navigate(['/home']);
       });
   }
 }
