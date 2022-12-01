@@ -4,6 +4,7 @@ import { Assignment } from '../assignments/assignment.model';
 import { LoggingService } from './logging.service';
 import { dataPourPeuplerBD } from './data';
 import { HttpClient } from '@angular/common/http';
+
 @Injectable({
   providedIn: 'root',
 })

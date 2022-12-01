@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { AssignmentsComponent } from './assignments/assignments.component';
+import { AssignmentsService } from './shared/assignments.service';
 import { AuthService } from './shared/auth.service';
 
 @Component({
@@ -9,7 +11,10 @@ import { AuthService } from './shared/auth.service';
 export class AppComponent {
   title = 'Gestion des assignments';
 
-  constructor(private authService: AuthService) {}
+  constructor(
+    private authService: AuthService,
+    private assignmentService: AssignmentsService
+  ) {}
 
   login() {
     if (!this.authService.loggedIn) {
@@ -17,5 +22,10 @@ export class AppComponent {
     } else {
       this.authService.logOut();
     }
+  }
+
+  initialiserLaBaseAvecDonneesDeTest() {
+    this.assignmentService.peuplerBD();
+    console.log('initialiserLaBaseAvecDonneesDeTest: Données Ajoutées ! ###');
   }
 }
