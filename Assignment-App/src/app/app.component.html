@@ -1,0 +1,25 @@
+<p>
+  <mat-toolbar color="accent">
+    <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
+      <mat-icon>menu</mat-icon>
+    </button>
+    
+    <span><nav>
+      <a routerLink="/home">
+       <h1>{{ title }}</h1>
+      </a>
+    </nav></span>
+    <span class="example-spacer"></span>
+    
+    
+  </mat-toolbar>
+</p>
+
+
+
+<mat-slide-toggle (click)="login()">Log In</mat-slide-toggle>
+
+<!--
+  Affiche le composant qui correspond à la route
+-->
+<router-outlet></router-outlet>
