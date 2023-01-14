@@ -19,8 +19,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatRadioModule } from '@angular/material/radio';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
-
-
+import { MatTabsModule } from '@angular/material/tabs';
 
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -32,13 +31,14 @@ import { RouterModule } from '@angular/router';
 import { EditAssignmentComponent } from './assignments/edit-assignment/edit-assignment.component';
 import { AuthGuard } from './shared/auth.guard';
 import { HttpClientModule } from '@angular/common/http';
-import { PageLoginComponent } from './users/page-login/page-login.component';
+import { ConnexionComponent } from './connexion/connexion.component';
+import { InscriptionComponent } from './inscription/inscription.component';
 
 
 const routes: Routes = [
   {
     path: '',
-    component: PageLoginComponent,
+    component: ConnexionComponent,
   },
   {
     path: 'home',
@@ -66,8 +66,8 @@ const routes: Routes = [
     AssignmentDetailComponent,
     AddAssignmentComponent,
     EditAssignmentComponent,
-    PageLoginComponent,
-    
+    ConnexionComponent,
+    InscriptionComponent,
   ],
   imports: [
     BrowserModule,
@@ -89,6 +89,7 @@ const routes: Routes = [
     HttpClientModule,
     MatStepperModule,
     MatSelectModule,
+    MatTabsModule,
     MatRadioModule,ReactiveFormsModule,MatToolbarModule,
   ],
   providers: [],
